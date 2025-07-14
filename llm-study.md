@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LLM 요약
+title: Welcome kit 요약
 ---
 
 ## AI란 무엇인가?
