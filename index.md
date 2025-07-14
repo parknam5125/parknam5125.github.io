@@ -5,6 +5,11 @@ title: 홈
 
 # Park Nam Jin's Study Notes
 
-공부한 내용을 정리한 블로그입니다. 아래 항목을 확인해 주세요:
-
-- [iRASC Multimodal Welcome Kit study](./llm-study.md)
+- [iRASC Multimodal Welcome Kit study]
+  - [STEP 1: Amazing Artificial Intelligence (with ChatGPT)](./llm-study.md)
+  - [STEP 2: Basics of Deep Learning](./llm-study2.md)
+  - [STEP 3: PyTorch Practice](./llm-study3.md)
+  - [STEP 4: Simple Deep Learning Model Practice](./llm-study4.md)
+  - [STEP 5: LLaMA-3 Model Practice](./llm-study5.md)
+  - [STEP 6: What is Multimodal LLMs?](./llm-study6.md)
+  - [STEP 7: Training Gemma3](./llm-study7.md)
