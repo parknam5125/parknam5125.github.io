@@ -61,3 +61,34 @@ title: Basics of Deep Learning
 - Parsimony: 변수가 적고 구조를 단순히 함
 - Complexity: 변수가 많고 구조를 어렵게 함
 - 간단하고 해석이 쉬운 모델일 수록 오버피팅을 방지하고 비용이 싼 경향이 있음
+
+## Linear Regression에서 인자 명칭
+- Assume model: y = a + bx + c
+- a는 intercept, coefficients라고 부름
+- b는 slope, parameter라고 부름
+- c는 에러임
+  
+## Linear Regression Model의 정확도 평가
+- RSS(Residual sum of squares)
+  - (실제값 - 예측값)의 제곱의 합
+  - 0에 가까울수록 정확함
+- RSE(Residual standard error)
+  - RSS를 n-2로 나눈 후 루트를 씌움
+  - 0에 가까울수록 정확함
+- R-squared
+  - (TSS(분산) - RSS)/TSS = 1 - RSS/TSS
+  - RSS가 0이면 값이 1로 나오며 정확한 상태
+  - RSS가 커져서 분산에 가까워지면 가장 부정확한 상태
+- 각 인자는 상관관계가 있는 것이지 인과관계가 있는 것이 아님
+
+## 왜 Least Squares를 쓰는가?
+- Independent and Identically Distributed(I.I.D) 가정
+  - 각 데이터는 서로 독립임
+  - 모든 데이터는 같은 확률 분포에서 나옴
+- 먼저 Maximum likelihood estimator(MLE)를 알아야함
+  - 우리가 원하는 θ값을 찾을 때 사용
+  - 데이터가 주어졌을 때 특정 데이터가 나타날 확률의 곱(IID가정이라 독립임) = Likelihood
+  - 여기서 Likelihood Function을 최대화 하는 θ를 찾는것이 MLE임
+  - 계산의 편의를 위해 로그스케일로 사용
+- 결론적으로 수학적으로 계산이 간단하고 통계적으로 정당하며, 실제로도 잘 작동하기 때문
+
