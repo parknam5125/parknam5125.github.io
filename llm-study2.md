@@ -62,10 +62,10 @@ title: Basics of Deep Learning
 - 간단하고 해석이 쉬운 모델일 수록 오버피팅을 방지하고 비용이 싼 경향이 있음
 
 ## Linear Regression에서 인자 명칭
-- 가정한 모델: y = \beta_0 + \beta_1 x + \varepsilon
-- \beta_0: intercept, coefficients라고 부름
-- \beta_1: slope, parameter라고 부름
- - \varepsilon: error
+- 가정한 모델: $y = \beta_0 + \beta_1 x + \varepsilon$
+- $\beta_0$: intercept, coefficients라고 부름
+- $\beta_1$: slope, parameter라고 부름
+- $\varepsilon$: error
   
 ## Linear Regression Model의 정확도 평가
 - RSS(Residual sum of squares)
@@ -153,7 +153,7 @@ title: Basics of Deep Learning
 - $\sigma(z) = \frac{1}{1 + e^{-z}}$
 - 확률로 해석이 가능하기에 classification에서 씀
 - 경계를 설정해 줄 수 있음
-- ![sigmoid](parknam5125.github.io/image/sigmoid)
+- ![sigmoid](./images/sigmoid.png)
 - 출처: https://rgbitcode.com/blog/senspond/55
 
 ## Logistic Regression
