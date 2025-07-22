@@ -284,7 +284,7 @@ title: Basics of Deep Learning
   - \\(\hat{y}\\): 예측값
   - Margin이 +1에 가까우면 예측도 강하고 정답률도 높음
   - Margin이 -1에 가까우면 예측은 강하지만 정답률이 낮음
-- Hinge Loss : max(0,1-\\(y*\hat{y}\\))
+- Hinge Loss : max(0,1-\\(y\hat{y}\\))
   - SVM에서 사용하는 함수
   - Margin이 1보다 잡으면 loss가 존재하고 1이상이면 loss가 0임
     - 즉 정답일지라도 margin이 충분히 크지 않으면 패널티를 줌
@@ -298,4 +298,35 @@ title: Basics of Deep Learning
   - margin이 작아질수록 지수적으로 큰 패널티
   - 오분류를 강하게 억제하지만 overfitting의 위험이 있음
 
+## Clustering
+- 비슷한 데이터끼리 묶는 비지도학습
+- lable(정답)이 없는 상태에서 패턴이나 구조를 자동으로 발견
+- inner similarity는 최대화, inter similarity는 최소화
+- Ex) K-means, Hierarchical clustering 등
+
+## K-means
+- 데이터를 K개의 클러스터로 나누는 알고리즘
+- K를 선택
+- 초기 중심점을 랜덤하게 설정
+- 각 데이터를 가까운 중심점에 할당
+- 각 클러스터의 평균값으로 중심점을 갱신
+- 해당 과정 반복(변화가 없을 때까지)
+- 유한한 데이터는 유한한 조합이 있기에 반드시 종료됨
+- 초기 중심점에 따라 결과가 달라짐
+- 최적의 K를 선택하는 방법으로 elbow-point가 있음
+
+## Dimension Reduction
+- 고차원 데이터를 낮은 차원으로 변환하는 기법
+- Data Manifold
+  - 데이터는 고차원에 있지만 실제로는 더 낮은 차원(manifold)에 깔려 있음
+  - 이러한 data manifold를 저차원 공간으로 펼치는 것이 Dimension Reduction의 목적임
+- MDS(Multidimensional Scaling)
+  - 고차원 데이터의 점들 간 거리를 저차원에서도 최대한 유지하는 방식
+  - 모든 데이터간의 유클리드 거리행렬을 계산
+  - 그 거리를 최대한 보존하며 저차원에 매핑
+- PCA(Principal Component Analysis)
+  - 데이터의 분산을 최대한 보존하는 방향으로 축을 찾아 회전시켜 매핑하는 방식
+  - 전체에서 분산이 가장 큰 방향을 찾음
+  - 그에 수직인 방향에 두 번째로 큰 축을 찾음
+  - n차원 데이터를 k차원(축으로 정한 갯수)으로 투영
 
