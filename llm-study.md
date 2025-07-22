@@ -82,10 +82,10 @@ Ex3) 휴튼
 ## Langchain을 활용한 RAG구현
 - 예제 실습
   - [최종코드](https://github.com/parknam5125/iRASC_welcome_kit_practice/blob/main/RAG_using_Langchain.py)
-  - [최종결과](./images/Langchain_output.png)
+  - ![최종결과](./images/Langchain_output.png)
 - 직접 구현해보기
-  - [최종코드](https://github.com/parknam5125/iRASC_welcome_kit_practice/blob/main/RAG_practice.py)
-  - [최종결과](./images/Langchain_output2.png)
+  - 최종코드](https://github.com/parknam5125/iRASC_welcome_kit_practice/blob/main/RAG_practice.py)
+  - ![최종결과](./images/Langchain_output2.png)
 - 비교
 
 | 항목 | 예제 실습 | 직접 구현 | 차이점 |
