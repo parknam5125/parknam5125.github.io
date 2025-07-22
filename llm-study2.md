@@ -89,7 +89,7 @@ title: Basics of Deep Learning
   - 우리가 원하는 θ값을 찾을 때 사용
   - 데이터가 주어졌을 때 특정 데이터가 나타날 확률의 곱(IID가정이라 독립임) = Likelihood
   - 여기서 Likelihood Function을 최대화 하는 θ를 찾는것이 MLE임
-  - 계산의 편의를 위해 로그스케일로 사용
+  - 계산의 편의를 위해 log스케일로 사용
 - 결론적으로 수학적으로 계산이 간단하고 통계적으로 정당하며, 실제로도 잘 작동하기 때문
 
 ## Linear Regression에서 Qualitative predictors는 어떻게 계산하는가
@@ -99,10 +99,53 @@ title: Basics of Deep Learning
 - 나머지 하나는 baseline으로 설정되기 때문에 n-1
 
 ## Interaction
-- 여러가지 인자들은 서로 상호작용을함
+- 여러가지 변수들은 서로 상호작용을함
 - 해당 상호작용도 회귀식에 반영할 수 있음
-- 2가지의 인자면 두 인자의 곱을 식에 반영하면 됨
+- 2가지의 인자면 두 변수의 곱을 식에 반영하면 됨
 - Hierachy
-  - 2가지의 인자를 하는 경우 혼자 쓰이는 경우를 먼저 계산해야함
+  - 2가지의 변수를 하는 경우 혼자 쓰이는 경우를 먼저 계산해야함
   - 그 이후 서로의 상호작용을 반영해야함
   - 당연하게도 독립적으로 영향을 미치는 부분이 훨씬 크기 때문임
+
+## Nonlinear relationship
+- Interaction에서 두 변수의 곱을 식에 반영하는 방식으로 2차 이상식도 반영이 가능
+- 같은 변수가 두번 이상 곱해지면 됨
+- 해당 변수의 파라미터가 양수면 시너지관계
+
+## Least square은 항상 존재하는가?
+- 그렇지 않음, 해당 값을 계산할때 역행렬이 들어가는데, 역행렬이 존재하지 않을 수 있음
+
+## Best subset selection
+- 가능한 모든 조합을 비교하여 가장 최적의 식을 찾는 것
+- 매우 큰 데이터의 경우 지수스케일로 복잡도가 커지는 단점이 있음
+- 차원이 커질수록 필요로하는 변수가 지수스케일로 커지기에 curse of dimensionality가 발생
+- 오버피팅이 발생할 수 있음
+
+## Stepwise selection(forward)
+- 변수가 없는 상태에서 성능향상이 가장 큰 변수부터 추가
+- 모든 조합을 계산하지 않는 장점이 있음
+- best solution이 보장되지 않음
+
+## Stepwise selection(backward)
+- 모든 변수가 들어간 식에서 기여도가 가장 작은 변수를 제거하며 가장 최적의 식을 찾는 방법
+- 데이터의 갯수 n이 변수의 갯수 p보다 항상 커야만 가능
+
+## Stagewise selection
+- 초기 식에 변수를 추가할 때 앞선 식을 상수로 취급하여 그대로 가져감
+- 추후 파라미터가 업데이트 될 수 있음
+
+## 어떻게 최적의 모델을 찾는가?
+- 변수를 모두 포함하는 것이 무조건적으로 최적의 식을 도출할 것임
+- 하지만 성능계산은 training data가 아니라, 반드시 test data로 해야함 
+- 랜덤하게 10~20%를 test data로 빼둬야함
+- Validation: training data중에서 test로 쓸 부분
+- K-fold cross validation
+  - 전체 데이터를 k로 나누어 각 부분을 test data로 쓰는 것
+  - k번의 교차검증을 하는 것임
+  - 편향성을 없앨 수 있음
+
+## Regression vs Classification
+- Regression: 수치값을 찾는 것
+  - ex) 시험 점수: 87점
+- Classification: 범주를 찾는 것
+  - ex) 시험 등급: B등
