@@ -149,3 +149,25 @@ title: Basics of Deep Learning
   - ex) 시험 점수: 87점
 - Classification: 범주를 찾는 것
   - ex) 시험 등급: B등
+
+## Sigmoid Function
+- $\sigma(z) = \frac{1}{1 + e^{-z}}$
+- 확률로 해석이 가능하기에 classification에서 씀
+- 경계를 설정해 줄 수 있음
+- ![sigmoid](parknam5125.github.io/image/sigmoid)
+- 출처: https://rgbitcode.com/blog/senspond/55
+
+## Logistic Regression
+- 주어진 변수를 바탕으로 결과값을 예측하는 모델
+- Linear regression처럼 계산하고 sigmoid에 넣어 확률로 변환
+- 특정 경계값을 정하여 그 이상이면 1 아니면 0
+- 식이 non-linear하기에 파라미터가 closed form이 아님 -> 수식으로 못품
+- 따라서, Optimization을 사용하여 근사적으로 구함
+
+## Optimization
+- Gradient Descent
+  - 손실함수의 최소값을 구하기 위해 해당 함수의 기울기를 따라 조금씩 이동하는 방법
+  - $\theta \leftarrow \theta - \alpha \cdot \nabla J(\theta)$
+  - \( \theta \): 모델의 파라미터
+  - \( \alpha \): 학습률 (learning rate)
+  - \( \nabla J(\theta) \): 손실 함수 \( J(\theta) \)에 대한 그래디언트(기울기)
