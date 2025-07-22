@@ -279,12 +279,12 @@ title: Basics of Deep Learning
   - kernel trick: 데이터의 차원을 높여서 해결
 
 ## Margin-based Loss function
-- Margin이란 예측의 확신도를 수치로 표현한 값 -> Margin = \\(y * \hat{y}\\)
+- Margin이란 예측의 확신도를 수치로 표현한 값 -> Margin = \\(y \hat{y}\\)
   - \\(y \in \ {+1, -1\}\\): 실제 정답
   - \\(\hat{y}\\): 예측값
   - Margin이 +1에 가까우면 예측도 강하고 정답률도 높음
   - Margin이 -1에 가까우면 예측은 강하지만 정답률이 낮음
-- Hinge Loss : max(0,1-\\(y\hat{y}\\))
+- Hinge Loss : max(0,1-\\(y \hat{y}\\))
   - SVM에서 사용하는 함수
   - Margin이 1보다 잡으면 loss가 존재하고 1이상이면 loss가 0임
     - 즉 정답일지라도 margin이 충분히 크지 않으면 패널티를 줌
