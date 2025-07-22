@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Amazing Artificial Intelligence (with ChatGPT)
 ---
 
