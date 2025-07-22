@@ -163,10 +163,14 @@ title: Basics of Deep Learning
 - 식이 non-linear하기에 파라미터가 closed form이 아님 -> 수식으로 못품
 - 따라서, Optimization을 사용하여 근사적으로 구함
 
-## Optimization
-- Gradient Descent
-  - 손실함수의 최소값을 구하기 위해 해당 함수의 기울기를 따라 조금씩 이동하는 방법
-  - \\(\theta \leftarrow \theta - \alpha \cdot \nabla J(\theta)\\)
-  - \\(\theta\\): 모델의 파라미터(진행에 따라 업데이트 됨)
-  - \\(\alpha\\): 학습률 (learning rate)
-  - \\(\nabla J(\theta)\\): 손실 함수 \( J(\theta) \)에 대한 기울기
+## Gradient Descent
+- 손실함수의 최소값을 구하기 위해 해당 함수의 기울기를 따라 조금씩 이동하는 방법
+- \\(\theta \leftarrow \theta - \alpha \cdot \nabla J(\theta)\\)
+- \\(\theta\\): 모델의 파라미터(진행에 따라 업데이트 됨)
+- \\(\alpha\\): 학습률 (learning rate)
+- \\(\nabla J(\theta)\\): 손실 함수 \( J(\theta) \)에 대한 기울기
+- 손실함수가 convex할때 global minimum을 보장함
+- 하지만 대부분 non-convex하기에 local minumum 혹은 saddle point가 존재함
+- 손실함수가 미분 가능할때만 작동 가능
+- 데이터가 매우 많으면 학습 시간이 매우 길어짐
+
