@@ -237,3 +237,33 @@ title: Basics of Deep Learning
   - 더욱 세밀하게 가지치기 가능
   - 구현이 복잡하고 시간이 오래걸림
 
+## Bootstrapping
+- 한정된 데이터를 복원추출로 여러번 샘플링해서 모델에 학습시키는 기법
+- 데이터 부족을 극복할 수 있음
+- 분산이 감소함
+- overfitting 방지 효과
+
+## Bagging(Bootstrap Aggregating)
+- 여러개의 bootstrapped 데이터셋을 만듬
+- 각 데이터셋으로 독립적인 모델을 학습시킴
+- 예측 시에는 각 모델의 결과를 모아서 종합함
+  - 회귀방식 -> 평균을 사용
+  - 분류방식 -> 다수결을 사용
+- overfitting을 방지함
+- 분산이 감소함 -> 일반화 향상
+- 예측 안정성 향상
+
+## Random Forest
+- 여러개의 Decision Trees를 만들어 각 트리의 예측 결과를 결합하는 모델
+- 각 트리에서 분할 기준을 선택할 때 무작위하게 선택
+- 정확도가 높음
+- overfitting방지
+- 해석이 어려움
+
+## Boosting
+- 여러개의 weak learner를 순차적으로 학습시키며 오류를 보완하는 앙상블 기법
+- AdaBoosting
+  - 이전에 틀린 문제의 가중치를 높이고
+  - 이전에 맞은 문제의 가중치를 낮추는 방식
+ 
+  
