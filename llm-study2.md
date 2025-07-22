@@ -167,6 +167,6 @@ title: Basics of Deep Learning
 - Gradient Descent
   - 손실함수의 최소값을 구하기 위해 해당 함수의 기울기를 따라 조금씩 이동하는 방법
   - $\theta \leftarrow \theta - \alpha \cdot \nabla J(\theta)$
-  - \theta : 모델의 파라미터(진행에 따라 업데이트 됨)
-  - \alpha : 학습률 (learning rate)
-  - \nabla J(\theta): 손실 함수 \( J(\theta) \)에 대한 기울기
+  - $\theta$ : 모델의 파라미터(진행에 따라 업데이트 됨)
+  - $\alpha$ : 학습률 (learning rate)
+  - $\nabla J(\theta)$: 손실 함수 \( J(\theta) \)에 대한 기울기
