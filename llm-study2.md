@@ -1,8 +1,9 @@
 ---
 title: Basics of Deep Learning
 ---
-
-## Machine Learning이란 무엇인가
+[Go to Deep Learning](#deep-Learning)
+---
+## Machine Learning
 - 많은 AI분야 중의 한 분야이다.
 - Data를 통해 배우고, manual instructions을 최소화하고 예측값을 추론
 - 통계적 알고리즘에 의존
@@ -330,3 +331,33 @@ title: Basics of Deep Learning
   - 그에 수직인 방향에 두 번째로 큰 축을 찾음
   - n차원 데이터를 k차원(축으로 정한 갯수)으로 투영
 
+## Nearest Neighbors
+- 새로운 데이터가 주어졌을 때 가장 가까운 기존데이터와 비교해서 예측하는 알고리즘
+- 가장 가까운 k개의 이웃을 찾고 다수결로 분류
+- 거리 측정 방식은 유클리드 거리, 맨하탄 거리, 코사인 유사도 등도 가능함
+- 학습시간: 빠름
+- 예측시간: 느림 -> 전부 비교해야함
+- 간단하고 직관적임
+- 차원의 저주를 극복 못함
+
+## Linear Classifiers(image기준)
+- 이미지 데이터는 원래 2D배열임 이를 1D벡터로 펼침(flatten)
+- 각 클래스별 가중치 벡터를 곱하여 해당 값을 출력으로 가짐
+- 출력값을 시그모이드에 넣어 0~1로 압축 -> 확률처럼 해석 가능
+- 클래스가 여러개일 경우 시그모이드가 아닌 softmax를 사용함
+
+## Cross Entropy
+- 예측값과 레이블(정답) 사이의 차이를 계산하는 손실함수
+- Softmax + Cross Entropy는 classifier 문제의 표준 조합임
+
+## KL Divergence(Kullback-Leibler Divergence)
+- Cross Entropy는 예측값과 정답을 비교하지만
+- KL Divergence은 두 확률 분포간의 유사도를 측정함
+
+---
+---
+## Deep Learning
+---
+---
+## Perceptron
+-
