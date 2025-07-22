@@ -12,4 +12,4 @@ title: 홈
   - [STEP 4: Simple Deep Learning Model Practice](./llm-study4.md)
   - [STEP 5: LLaMA-3 Model Practice](./llm-study5.md)
   - [STEP 6: What is Multimodal LLMs?](./llm-study6.md)
-  - [STEP 7: Training Gemma3](./llm-study7.md)
+  - [STEP 7: Training Gamma3](./llm-study7.md)
