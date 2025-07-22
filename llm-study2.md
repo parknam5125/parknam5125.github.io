@@ -174,3 +174,40 @@ title: Basics of Deep Learning
 - 손실함수가 미분 가능할때만 작동 가능
 - 데이터가 매우 많으면 학습 시간이 매우 길어짐
 
+## Overfitting
+- 모델이 traing data에 너무 과하게 접학하여 test data에 대해 적합하지 못하는 현상
+- 모델구조가 너무 복잡해지면 오버피팅이 발생함
+- training data가 너무 적으면 발생함
+- noise까지 학습하면 발생함
+- 그 결과로 training data에 대한 성능은 좋음
+- 하지만 test data에 대한 성능이 나쁨
+
+## Regularization
+- 앞선 오버피팅을 방지하기위해 모델을 규제하는 방법
+- 기존 손실함수에 regularization term을 추가함
+  - regularization term: \\(\lambda\\) * Penalty
+- 여기서 penalty의 종류에 따라 ridge와 lasso로 나뉨
+
+## Ridge Regression(L2 정규화)
+- 모델의 모든 파라미터를 작게 만듬
+- 파라미터를 0으로 만들지는 않음
+- 오버피팅을 줄이지만 모든 변수는 남음
+- 각 파라미터를 작게 만들어 복잡도를 낮춤
+
+## Lasso Regression(L1 정규화)
+- 파라미터 일부를 아예 0으로 만듬
+- 불필요한 파라미터를 제거 가능함
+- 모델 해석이 쉬움
+- 고차원 데이터에서 유용함
+- 중요하지 않은 파라미터를 제거해서 모델을 단순하게 만듬
+
+## Bias-Variance Trade-off
+- High Bias and Low Variance
+  - 단순 모델
+  - 오버피팅 확률 낮음
+  - Ex) linear regression
+- Low Bias and Hugh Variance
+  - 복잡 모델
+  - 오버피팅 확률 높음
+  - Ex) 고차 다항 회귀
+
