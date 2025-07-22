@@ -266,4 +266,36 @@ title: Basics of Deep Learning
   - 이전에 틀린 문제의 가중치를 높이고
   - 이전에 맞은 문제의 가중치를 낮추는 방식
  
-  
+## SVM(Support Vector Machine)
+- 데이터를 두 클래스로 나누는 최적의 경계선(Hyperplane)을찾는 지도학습 알고리즘
+- 용어정리
+  - Margin: Hyperplane에서 가장 가까운 데이터까지의 거리
+  - Support Vector: Margin을 결장하는 핵심 데이터
+- Margin이 가장 넓은 선을 찾는 것이 목표 -> optimal hyperplane을 찾기
+- 현실 데이터는 대부분 직선으로 완벽히 나누어지지 않음 -> 확장의 필요성
+  - soft margin: 약간의 노이즈를 허용 -> C라는 하이퍼파라미터를 사용
+    - C가 크면 오차 적게 허용 -> overfitting 위험
+    - C가 작으면 오차 많이 허용 -> 일반성 높아짐
+  - kernel trick: 데이터의 차원을 높여서 해결
+
+## Margin-based Loss function
+- Margin이란 예측의 확신도를 수치로 표현한 값 -> Margin = y * \\(f(x)\\)
+  - \\(y \in \ {+1, -1\}\\): 실제 정답
+  - \\(f(x)\\): 예측값
+  - Margin이 +1에 가까우면 예측도 강하고 정답률도 높음
+  - Margin이 -1에 가까우면 예측은 강하지만 정답률이 낮음
+- Hinge Loss : max(0,1-y*f(x))
+  - SVM에서 사용하는 함수
+  - Margin이 1보다 잡으면 loss가 존재하고 1이상이면 loss가 0임
+    - 즉 정답일지라도 margin이 충분히 크지 않으면 패널티를 줌
+  - 확신있는 예측을 하도록 학습을 유도함
+- Log Loss(Logistic Loss): \\( \log(1 + e^{-y \hat{y}}) \\)
+  - Logistic Regression에서 사용하는 함수
+  - Margin이 커질수록 로그스케일로 감소
+  - 확률적 해석이 가능함
+- Exponential Loss: \\(e^{-y \hat{y}}\\)
+  - Boosting 계열에서 사용
+  - margin이 작아질수록 지수적으로 큰 패널티
+  - 오분류를 강하게 억제하지만 overfitting의 위험이 있음
+
+
