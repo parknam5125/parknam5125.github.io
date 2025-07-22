@@ -63,10 +63,10 @@ title: Basics of Deep Learning
 - 간단하고 해석이 쉬운 모델일 수록 오버피팅을 방지하고 비용이 싼 경향이 있음
 
 ## Linear Regression에서 인자 명칭
-- Assume model: y = a + bx + c
-- a는 intercept, coefficients라고 부름
-- b는 slope, parameter라고 부름
-- c는 에러임
+- 가정한 모델: y = \beta_0 + \beta_1 x + \varepsilon
+- \beta_0: intercept, coefficients라고 부름
+- \beta_1: slope, parameter라고 부름
+ - \varepsilon: error
   
 ## Linear Regression Model의 정확도 평가
 - RSS(Residual sum of squares)
@@ -168,6 +168,6 @@ title: Basics of Deep Learning
 - Gradient Descent
   - 손실함수의 최소값을 구하기 위해 해당 함수의 기울기를 따라 조금씩 이동하는 방법
   - $\theta \leftarrow \theta - \alpha \cdot \nabla J(\theta)$
-  - \( \theta \): 모델의 파라미터
-  - \( \alpha \): 학습률 (learning rate)
-  - \( \nabla J(\theta) \): 손실 함수 \( J(\theta) \)에 대한 그래디언트(기울기)
+  - \theta : 모델의 파라미터(진행에 따라 업데이트 됨)
+  - \alpha : 학습률 (learning rate)
+  - \nabla J(\theta): 손실 함수 \( J(\theta) \)에 대한 기울기
