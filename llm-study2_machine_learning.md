@@ -1,8 +1,6 @@
 ---
 title: Basics of Deep Learning
 ---
-[Go to Deep Learning](#deep-Learning)
----
 ## Machine Learning
 - 많은 AI분야 중의 한 분야이다.
 - Data를 통해 배우고, manual instructions을 최소화하고 예측값을 추론
@@ -353,11 +351,3 @@ title: Basics of Deep Learning
 ## KL Divergence(Kullback-Leibler Divergence)
 - Cross Entropy는 예측값과 정답을 비교하지만
 - KL Divergence은 두 확률 분포간의 유사도를 측정함
-
----
----
-## Deep Learning
----
----
-## Perceptron
--
