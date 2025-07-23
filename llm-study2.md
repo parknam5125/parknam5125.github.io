@@ -607,4 +607,15 @@ Deep Learning
 - convex combination(내분)을 사용하여 gradient highway를 hidden state에 추가함
 - 기억 상실을 보완하는 게이트 기반 구조
 
-## 
+## Machine Translation Problem
+- 다른 언어로 번역하는 일은 어순과 문법의 차이로 1:1 매칭이 되지 않음
+- 따라서 앞서 배운 1:1 many-to-many 방법을 사용할 수 없음
+- 실제 번역가들이 하는 것 처럼 전체 문장을 Encoding 한 이후 Decoding하는 방법을 사용함
+- Encoding이 끝나면 전체 맥락을 저장한 벡터를 만들고 해당 백터를 Decoding의 첫과정으로 넣음
+- Decoding의 첫 과정에서 이전 맥락 벡터와 SOS(Start Of Sentence)를 입력값으로 넣고
+- 출력값을 하나씩 뽑아냄 -> 이 출력값이 다음 decoding과정의 입력값으로 들어감(Auto-Regressive)
+- 학습시킬 때는 정답이 되는 단어들과 Cross-Entropy를 통해 loss를 생성함
+- Decoding 과정에서 첫 단어가 잘못된 단어가 나오면 이후로도 계속 헛소리가 나오게됨
+- 따라서 첫 단어는 정답을 제출해줘야함 -> Teacher Forcing
+
+
