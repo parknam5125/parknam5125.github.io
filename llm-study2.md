@@ -391,9 +391,78 @@ Deep Learning
 - loss 계산
 - 역방향으로 chain rule을 이용해 gradient계산
 - 각 가중치를 경사 하강법으로 업데이트
+- upstream gredient를 받아 local gradient를 곱하여 downstream gradient로 나감
 
 ## Chain Rule
 - 복합함수의 미분을 계산할때 사용하는 미분 규칙
 - \\(\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx}\\)
 
-##
+## Fully Connected Layer
+- 모든 입력값이 모든 출력값에 연결된 신경망구조
+- 파라미터 수가 많음
+- spatial structure를 고려하지 않음
+
+## Spatial Locality
+- 데이터에서 서로 가까운 픽셀들이 관련있는 정보를 가질 가능성이 높은 성질
+- CNN의 핵심가정 중 하나
+
+## Positional Invariance
+- 이미지내에 위치가 바뀌어도 동일하게 인식할 수 있는 능력
+- CNN의 핵심가정 중 하나
+
+## Convolutional Layer
+- 입력이미지에 필터를 적용해 feature map을 생성하는 층
+- 필터를 입력이미지에 convolve하여 값을 계산
+- 이미지의 특정 패턴을 감지
+
+## Nested Convolutional Layer
+- 여러개의 conv layer를 쌓은 구조
+- 저수준(처음): 모서리, 선 등 감지
+- 중간수준: 윤곽, 패턴 등 감지
+- 고수준(끝): 객체 감지
+- 깊을수록 어려운 학습 가능
+
+## Stride
+- 필터가 입력이미지를 읽는 간격
+- 값이 크면 계산량 감소, 정보 손실
+
+## Padding
+- 필터로 읽으면 출력값이 입력값보다 작아짐(1x1필터 제외)
+- 따라서 테두리부분을 0으로 패딩을 함
+- 출력값이 작아지지 않음
+
+## Pooling layer
+- feature map을 압축하여 중요한 정보만 추출하는 층
+- Ex) 2x2를 1x1로 줄임(max값만 추출)
+- 오버피팅을 방지함
+- Positional Invariance 증가
+
+## Sigmoid's problem
+- kill gradient: backpropagation시 거의 0이 나오면 문제가 됨
+- not zero-centered output: gredient update가 항상 양수거나 음수만 됨
+
+## Tanh funtion's problem
+- kill gradient: backpropagation시 거의 0이 나오면 문제가 됨
+- tanh(x) = 2*sig(2x)-1
+
+## ReLu's problem
+- not zero-centered output
+- 0에서 미분 불가능
+- 처음에 음수나오면 이후 계속 음
+
+## Leaky ReLU
+- max(0.01x, x)
+- 0이하가 0으로 죽는 경우를 방지함
+- 여전히 0에서 미분 불가능
+  
+## ELU
+- \\(x(if x>=0)\\)
+- \\(\alpha \cdot (e^x - 1)(if x<0)\\)
+- 0에서 미분이 가능
+- exp는 여전히 계산이 비쌈
+
+## Data Augmentation
+- 기존의 데이터를 변형하거나 확장하여 학습 데이터를 늘리는 기법
+- 데이터가 부족하거나 모델이 overfitting 되는 것을 방지
+- Ex) 상하반전, 회전, 이동, 노이즈추가, 잘라내기, 색상변화
+## 
