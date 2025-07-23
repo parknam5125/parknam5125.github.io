@@ -576,3 +576,35 @@ Deep Learning
 - n이 커질수록 더 많은 문맥을 반영하여 성능이 좋아짐
 - 하지만 메모리 사용량이 기하급수적으로 증가
 - 단어들의 조합은 경우의 수가 너무 많아져 엄청난 데이터가 필요함
+
+## Gradient Flow problem in RNN
+- backpropagation과정에서 gradient가 누적이 됨
+- \\(\frac{\partial \mathcal{L}_t}{\partial h_t} \left( \prod_{k=2}^{t} \tanh'\left( \mathbf{W}_{hh} \mathbf{h}_{k-1} + \mathbf{W}_{xh} \mathbf{x}_k \right) \right) \mathbf{W}_{hh}^{t-1} \frac{\partial \mathbf{h}_1}{\partial \mathbf{W}_{hh}}\\)
+- 해당 식에서 괄호 안의 식은 항상 0~1 사이의 값이 반복해서 곱해짐(tanh'은 항상 0~1값만 가지니)
+- \\( W_{\text{hh}} \\)가 t-1번 곱해지는 경우는 발산할 수도 있고 0으로 수렴할 수도 있음
+- 먼저 발산하는 경우는 gradient clip을 통해 조절해 줄 수 있음 -> 벡터값의 크기로 나눠주므로 방향은 올바르게 유지가 되고 크기만 조절이 됨
+- 하지만 여전히 수렴하는 문제는 해결이 불가능함
+
+## LSTM(Long Short-Term Memory)
+- 정보를 장기적으로 보존하거나 버릴 수 있는 Cell State를 도입하는 방식으로 RNN의 문제를 해결
+- Cell State는 FC layer가 아닌 highway를 통과하기에 gradient 소실이 적음 -> 장기기억 가능
+- Forget gate
+  - 새로운 FC에 sigmoid를 결합하여 Cell State에 곱함
+  - 기존 계산값(tanh를 통과한 값)에 해당 값을 더함
+  - 그 값을 다시 tanh에 넣어 출력함
+  - 들어오는 값에 따라 새로 추가된 FC에 가중치를 바꾸어주면 이전 정보를 선택적으로 기억가능
+- Input gate
+  - 새로운 FC에 sigmoid를 결합하여 기존 계산값(tanh를 통과한 값)에 곱함
+  - Cell State의 값을 더함
+  - 그 값을 다시 tanh에 넣어 출력함
+  - 들어오는 값에 다라 long term memory에 얼마나 반영할지 선택 가능
+- Output gate
+  - 새로운 FC에 sigmoid를 결합하여 최종 결과값에 곱함
+ 
+## GRU(Gated Recurrent Unit)
+- Cell State를 추가하지 않음
+- LSTM보다 파라미터 수가 적음
+- convex combination(내분)을 사용하여 gradient highway를 hidden state에 추가함
+- 기억 상실을 보완하는 게이트 기반 구조
+
+## 
