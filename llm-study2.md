@@ -607,7 +607,7 @@ Deep Learning
 - convex combination(내분)을 사용하여 gradient highway를 hidden state에 추가함
 - 기억 상실을 보완하는 게이트 기반 구조
 
-## Machine Translation Problem
+## Machine Translation Problem(seq2seq)
 - 다른 언어로 번역하는 일은 어순과 문법의 차이로 1:1 매칭이 되지 않음
 - 따라서 앞서 배운 1:1 many-to-many 방법을 사용할 수 없음
 - 실제 번역가들이 하는 것 처럼 전체 문장을 Encoding 한 이후 Decoding하는 방법을 사용함
@@ -617,5 +617,14 @@ Deep Learning
 - 학습시킬 때는 정답이 되는 단어들과 Cross-Entropy를 통해 loss를 생성함
 - Decoding 과정에서 첫 단어가 잘못된 단어가 나오면 이후로도 계속 헛소리가 나오게됨
 - 따라서 첫 단어는 정답을 제출해줘야함 -> Teacher Forcing
+
+## Attention
+- Seq2seq는 여전히 오래된 내용을 여전히 기억 못하는 문제점들이 있음
+- 따라서 decoding과정에서 encoding때 썼던 벡터들을 활용하자는 아이디어가 생김
+- Attention은 그 중 어떤 벡터를 활용할지를 정하는 매커니즘임
+- 먼저 Query(현재 상태, Decoder hidden state)와 Key(Encoder hidden state)간의 유사도를 weight로 잡음
+- 이후 각각의 key에 weight을 dot-product(내적)하여 Softmax에 넣음
+- 해당 값들을 각 key에 반영하여 weighted sum을 만듬 -> Attention value
+- 이 값을 Query에 붙이고 FC, activate function 과정을 거쳐 new query로 decoding 진행
 
 
