@@ -484,3 +484,45 @@ Deep Learning
   - Inverse Sqrt 방식
 - Initial Warmup
   - 초기 구간의 학습률을 0에서 선형적으로 증가시키고 이후 정해진 방식대로 감소
+
+## DL에서 overfitting 줄이는 방법
+- Dropout: 각각의 forward pass에서 랜덤하게 몇몇 뉴런을 0으로 바꾸기
+  - training과정에서 50%확률로 뉴런을 끄면서 최적화 시키고 test에선 다 켜기
+  - training과정에서 뉴런이 꺼졌던 것을 보정하기 위해 출력값에 scale을 적용
+  - Ex) 출력을 0.5배로 줄여서 일관성 유지
+- Batch normalization
+- Data augmentation
+
+## SGD(Stochastic Gradient Descent)
+- Jittering: loss함수가 한 방향으로 가파르고 다른방향으로 완만할 떄, SGD가 가파른 방향으로 심하게 튕기며 수렴 속도가 느려지는 현상
+- Saddle points: 말 안장처럼 어느 방향에서든 gradient가 0이 되는 부분에 SGD가 고립되는 문제점
+- Inaccurate gradient estimation: 전체 데이터가 아닌 일부(mini-batch)만 보고 gradient를 계산하기에, 부정확할 수 있음
+
+## 해결법
+- Momentum: 이전의 속도를 반영하여 이후 위치계산에 반영하는 것
+  - Jittering을 줄이기 좋음
+  - 수렴 속도 빠름
+- Adagrad: 자주 업데이트된 파라미터는 학습률을 줄이고 드물게 업데이트된 파라미터는 학습률을 키움
+  - NLP등 에서 매우 유리
+  - 제곱누적합이 계속 커지고 분모로 들어가서 학습률이 0으로 수렴할 수 있음
+- RMSProp: Adagrad의 제곱 누적합 대신 EMA를 사용함 -> 최근 계산에 집중
+  - 학습률이 0으로 수렴하지 않음
+- Adam: Momentum + RMSProp
+  - 거의 모든 문제에 기본값처럼 많이 사용함
+  - 빠르고 안정적
+
+## Optimization
+- First Optimization: 1차함수로 접선을 그어서 찾음
+  - 빠르고 여러번 할 수 있음
+- Second Optimization: 2차함수로 접선을 그어서 찾음
+  - 느리지만 조금만 해도 찾을 수 있음
+ 
+## Batch Normalization
+- 학습 중에 각 층의 입력 분포가 계속 바뀌면 다음 층이 그 변화에 계속 적응해야해서 학습이 느려짐
+- ex)기압과 온도는 다름
+- 각층의 입력을 정규화해주는 것이 Batch Normalization
+- 한 층의 입력을 mini-batch 단위로 정규화
+- 정규화과정에서 분산이 0이 될수 있으므로 입실론 추가
+- 일반적으로 Activate function 전에 사용
+- Test에는 전제 배치가 없기 때문에 training에 사용된 데이터를 사용해야함
+- IID가정이 필수적임, batch크기가 너무 작으면 문제가 생김
