@@ -351,3 +351,49 @@ title: Basics of Deep Learning
 ## KL Divergence(Kullback-Leibler Divergence)
 - Cross Entropy는 예측값과 정답을 비교하지만
 - KL Divergence은 두 확률 분포간의 유사도를 측정함
+
+---
+---
+Deep Learning
+---
+## Perceptron
+- 인공신경망의 기본 단위
+- 입력값들에 가중치를 곱한 선형조합을 activation function에 대입하여 출력을 냄
+- bias도 포함됨
+- 여러개의 Perceptron을 사용하면 Multiple Perceptron임
+  - 다차원 문제를 해결 가능
+
+## Neural network
+- Perceptron을 여러층으로 연결한 구조
+- 입력층, 은닉층(Hidden layer), 출력층으로 구성됨
+- 비선형적인 문제도 해결 가능
+- 주로 Backpropagation을 통해 이루어짐
+
+## Single layer
+- 입력층과 출력층만 있는 신경망 구조
+- XOR 문제를 해결하지 못함
+
+## Multilayer Perceptron
+- 입력층과 출력층 뿐만 아니라 은닉층도 가짐
+- 비선형 activation function을 사용함
+- 학습은 Backpropagation와 경사하강법을 이용함
+
+## Activation function
+- 퍼셉트론에 들어온 선형조합을 비선형 함수로 바꿔주어 복잡한 문제를 해결해줌
+- Step function: 0 or 1
+- Sigmoid
+- tanh(x)
+- ReLu: max(0, x)
+
+## Backpropagation
+- 출력값과 정답사이의 오차를 바탕으로 가중치를 업데이트하기 위한 gradient를 계산하는 알고리즘
+- forward pass 계산
+- loss 계산
+- 역방향으로 chain rule을 이용해 gradient계산
+- 각 가중치를 경사 하강법으로 업데이트
+
+## Chain Rule
+- 복합함수의 미분을 계산할때 사용하는 미분 규칙
+- \\(\frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx}\\)
+
+##
