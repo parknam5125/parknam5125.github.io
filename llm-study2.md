@@ -465,4 +465,22 @@ Deep Learning
 - 기존의 데이터를 변형하거나 확장하여 학습 데이터를 늘리는 기법
 - 데이터가 부족하거나 모델이 overfitting 되는 것을 방지
 - Ex) 상하반전, 회전, 이동, 노이즈추가, 잘라내기, 색상변화
-## 
+
+## Weight Initializing
+- 가중치가 너무 작으면 gradient가 소실됨
+- 가중치가 너무 높으면 gradient가 폭주함
+- 이러한 경우 backpropagation가 힘들어짐
+- Xavier Initialization
+  - activate funtion이 linear하거나 sigmoid나 tanh 일 때 적절한 가중치를 제공
+  - \\( d_{\text{in}} \\)으로 나눠줌 -> ( d_{\text{in}} \\)는 입력 차원 수
+
+## Learning rate
+- very high: 에폭에 따라 로스가 매우 커짐
+- low: 학습속도가 느림 -> 에폭에 따라 로스가 서서히 내려감
+- high: 초반에 로스가 빨리 내려가나, 이후 플랫한 형태가 나옴
+- 따라서 초반에 높게 설정 후 서서히 낮춤 = Learning rate decay
+  - Cosine 방식
+  - Linear 방식
+  - Inverse Sqrt 방식
+- Initial Warmup
+  - 초기 구간의 학습률을 0에서 선형적으로 증가시키고 이후 정해진 방식대로 감소
