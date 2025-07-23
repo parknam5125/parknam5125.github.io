@@ -472,7 +472,7 @@ Deep Learning
 - 이러한 경우 backpropagation가 힘들어짐
 - Xavier Initialization
   - activate funtion이 linear하거나 sigmoid나 tanh 일 때 적절한 가중치를 제공
-  - \\( d_{\text{in}} \\)으로 나눠줌 -> ( d_{\text{in}} \\)는 입력 차원 수
+  - \\( d_{\text{in}} \\)으로 나눠줌 -> \\( d_{\text{in}} \\)는 입력 차원 수
 
 ## Learning rate
 - very high: 에폭에 따라 로스가 매우 커짐
