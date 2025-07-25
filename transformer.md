@@ -60,7 +60,8 @@ title: What is Transformer ?
 - 하지만 GPT처럼 디코더만 사용하는 구조도 있고, BERT처럼 인코더만 사용하는 구조도 있습니다.
 
 ![trans](./images/trans.png)
-출처: https://www.researchgate.net/figure/Figura-3-Arquitectura-del-Transformador-introducida-en-Attention-is-all-you-need-4_fig1_368664665
+
+- 출처: https://www.researchgate.net/figure/Figura-3-Arquitectura-del-Transformador-introducida-en-Attention-is-all-you-need-4_fig1_368664665
 
 #### Encoder 구조
 
