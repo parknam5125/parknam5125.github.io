@@ -627,4 +627,53 @@ Deep Learning
 - 해당 값들을 각 key에 반영하여 weighted sum을 만듬 -> Attention value
 - 이 값을 Query에 붙이고 FC, activate function 과정을 거쳐 new query로 decoding 진행
 
+## Trasformer
+- 앞선 Attention의 query, key, value를 사용함
+- 여러개의 입력값이 들어오면 하나의 입력값에 \\( W_{\text{Q}} \\)를 곱하여 하나의 query를 만들어냄
+- 이후 모든 입력값에 \\( W_{\text{K}} \\)를 곱하여 여러개의 key를 만들어냄
+- 이전에 만든 \\( W_{\text{Q}} \\)와 \\( W_{\text{K}} \\)를 내적하여 softmax에 넣어 각 확률을 구함
+- 모든 입력값에 \\( W_{\text{V}} \\)를 곱하여 value를 만들어 이전에 도출된 확률을 곱하여 합함
+- 이후 \\( W_{\text{O}} \\)를 곱하여 입력값의 크기와 같은 결과값을 만들어냄
+- 이렇게 만들어진 결과는 하나의 입력값과 매우 유사하지만 다른 맥락까지 포함하고 있음
+- 이 과정이 transformer임
+- 결국 입력값에 매우 유사하지만 모든 맥락을 담고 있는 결과값을 만들어 내는 것임
 
+## Token Aggregation
+- Transformer는 self-attention을 통해 입력된 각 토큰의 중요도를 학습함
+- 하지만 각 토큰의 중요도를 학습하는것이지 전체 내용을 요약하는 벡터가 존재하지 않음
+- 따라서 이를 해결하기위해 CLS라는 더미토큰을 추가함
+- 더미토큰에서 나오게된 결과값은 전체 토큰 문맥을 학습하게 됨
+- 그 결과값을 classifier에 넣고 학습하게 되면 전체 내용을 반영하는 classifier를 만들수 있음
+
+## Transformer 작동 원리(with 번역)
+- 먼저 입력값으로 문장을 받고 각 단어를 word embedding함(GloVe 등)
+- RNN의 경우 순차적으로 입력이 들어오기 때문에 토큰의 순서를 반영할 수 있음
+- 하지만 Transformer의 경우 병렬적으로 처리하기 때문에 순서정보가 없음
+- 그 순서 정보를 더해주는 방법이 Positional encoding임
+- 해당 과정을 거치면 같은 단어라도 위치가 다르면 다르게 입력이 되기에 모델이 순서를 인식 할 수 있음
+- 이후 각 토큰들의 query, key, value를 attention과 같이 만들어냄
+- 문맥에 따라 같은 단어가 나타내는 의미가 다를 수 있으므로 Multi-head self-attention을 사용함
+- 여러개의 attention head를 병렬로 사용하여 다양한 관점에서 토큰을 바라보게 해줌
+- 각 토큰은 다른 토큰들과의 관계를 반영하기에 토큰끼리 의존적임
+- 자기 자신의 벡터값만을 가지고 계산하는 Feed-Foreward Layer를 추가하여 독립적으로 처리를 해줌
+- decoder는 incoder의 출력을 입력받음
+- 이전에 생선된 토큰 다음 토큰을 생성할 때 예측하는 방식으로 사용함
+- decoder는 미래 토큰을 보면 안되기에 mask처리를 함
+- 이후 decoder로부터 나온 query, encoder로부터 나온 key, value를 다시 multi-head attention에 넣음
+- 이 과정을 반복하고 마지막에 softmax처리를 하여 결과값을 예측함
+
+## BERT
+- 입력으로 두 문장을 받고 이를 표현할 떄 3가지 embedding을 부여함
+- 단어별로 구분하는 토큰embedding, 문장별로 구분하는 segment embedding, 위치정보를 알려주는 position embedding
+- 이후 문장속 일부 단어를 지우고 MASK로 교체 후 정답 단어를 예측하도록 훈련
+- 이후 다음 문장이 실제로 이어지는 문장인지 분류하는 문제로 학습시킴
+
+## ViT(Vision Transformer)
+- Transformer를 이미지에 직접 적용한 구조임
+- 입력된 이미지를 작은 크기의 패치로 나눔
+- 각각의 패치를 위의 토큰처럼 여기고 Transformer에 입력
+- 기존 NLP와 마찬가지로 CLS토큰을 맨 앞에 추가함 -> 이미지 분류용
+- Position embedding을 더해 순서(위치) 정보를 추가
+- ViT는 매우 큰 데이터셋에서만 좋은 성능을 냄
+- 충분히 학습되면 CNN보다 좋은 성능을 냄
+- 작은 데이터셋은 성능이 좋지 못함
