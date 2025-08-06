@@ -12,3 +12,7 @@ RNN with predict word
 ---
 LSTM
 ![LSTM](https://github.com/parknam5125/Python_Practice_for_ML-DL/blob/main/LSTM.py)
+
+---
+Better MNIST (replace SDG with ADAM)
+![MNIST](https://github.com/parknam5125/Python_Practice_for_ML-DL/blob/main/MNIST_replace_SDG_with_Adam.py)
