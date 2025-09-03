@@ -28,5 +28,22 @@ title: What is Multimodal LLMs?
     6. 분류
   - [참고자료](https://taewan2002.medium.com/vit-vision-transformer-1d0555068f48)
 
-- CLIP: Connecting text and images
-  
+- CLIP: Contrastive Language-Image Pre-training
+  - Model for Connecting text and image
+  - 이미지와 텍스트를 동시에 따로 학습하면서 임베딩 공간에서의 정렬을 배우는 구조
+  - 올바른 쌍은 임베딩 벡터가 서로 가깝도록, 잘못된 쌍은 멀어지도록
+  - 기존 CV모델과 달리 자연어를 이미지의 부연설명과 같은 요소로 사용
+  - 따라서, 예측해야하는 클래스의 갯수가 정해져 있지 않기에 Cross Entropy를 사용할 수 없음
+  - Contrastive Learning을 사용함: 이미지와 텍스트를 각각 같은 공간에 임베딩하여 올바른 쌍은 코사인 유사도를 놓이고 잘못된 쌍은 낮춤 -> 올바른 페어가 높은 확률을 갖도록 함
+  - CLIP는 Zero shot성능에서 뛰어난 결과를 보여줌
+  - [참고자료](https://taewan2002.medium.com/clip-connecting-text-and-images-1c76cc1bae65)
+ 
+- BLIP: Bootstrapping Language-Image Pre-training
+  - 이미지 인코더와 텍스트 인코더를 하나로 통합하여 이해와 생성을 둘 다 잘 하도록 사전학습한 모델
+  - 웹에서 얻은 노이즈 많은 캡션을 capfilt하여 사전학습에 사용함
+  - 웹이미지를 자체적으로 설명 -> 필터링으로 노이즈 제거 -> 사람 라벨 데이터와 결합 -> 새로 학습
+  - BLIP는 하나의 모델이 3가지 모드로 동작함
+    - Unimodal Encoder: 이미지와 텍스트를 따로 인코딩
+    - Image-grounded Text Encoder: 상호작용을 모델링
+    - Image-grounded Text Decoder: LM(Language Modeling) 학습
+  - BLIP는 한 모델에서 동시에 학습하여 이해와 생성을 둘다 잘하고 스스로 노이즈를 줄여 데이터 품질을 올림
