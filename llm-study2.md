@@ -74,7 +74,7 @@ title: Basics of Deep Learning
   - RSS를 n-2로 나눈 후 루트를 씌움
   - 0에 가까울수록 정확함
 - R-squared
-  - (TSS(분산) - RSS)/TSS = 1 - RSS/TSS
+  -  \\( \frac{TSS(분산) - RSS}{TSS} = 1 - \frac{RSS}{TSS} \\)
   - RSS가 0이면 값이 1로 나오며 정확한 상태
   - RSS가 커져서 분산에 가까워지면 가장 부정확한 상태
 - 각 인자는 상관관계가 있는 것이지 인과관계가 있는 것이 아님
@@ -579,7 +579,7 @@ Deep Learning
 
 ## Gradient Flow problem in RNN
 - backpropagation과정에서 gradient가 누적이 됨
-- \\(\frac{\partial \mathcal{L}_t}{\partial h_t} \left( \prod_{k=2}^{t} \tanh'\left( \mathbf{W}_{hh} \mathbf{h}_{k-1} + \mathbf{W}_{xh} \mathbf{x}_k \right) \right) \mathbf{W}_{hh}^{t-1} \frac{\partial \mathbf{h}_1}{\partial \mathbf{W}_{hh}}\\)
+- \\( \frac{\partial \mathcal{L}_t}{\partial h_t} \left( \prod_{k=2}^{t} \tanh'\left( \mathbf{W}_{hh} \mathbf{h}_{k-1} + \mathbf{W}_{xh} \mathbf{x}_k \right) \right) \mathbf{W}_{hh}^{t-1} \frac{\partial \mathbf{h}_1}{\partial \mathbf{W}_{hh}} \\)
 - 해당 식에서 괄호 안의 식은 항상 0~1 사이의 값이 반복해서 곱해짐(tanh'은 항상 0~1값만 가지니)
 - \\( W_{\text{hh}} \\)가 t-1번 곱해지는 경우는 발산할 수도 있고 0으로 수렴할 수도 있음
 - 먼저 발산하는 경우는 gradient clip을 통해 조절해 줄 수 있음 -> 벡터값의 크기로 나눠주므로 방향은 올바르게 유지가 되고 크기만 조절이 됨
